@@ -17,13 +17,17 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
 	margin: 0; padding: 0;
 }
 
+.skip-link .screen-reader-text {
+	display: none;
+}
+
 .page-template-splash {
 	overflow: hidden;
 	width: 100vw;
 	height: 100vh;
 }
 
-.page-template-splash .header,
+.page-template-splash header,
 .page-template-splash .main-navigation {
 	display: none;
 }
