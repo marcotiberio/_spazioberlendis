@@ -17,7 +17,7 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
 	margin: 0; padding: 0;
 }
 
-.skip-link .screen-reader-text {
+.skip-link {
 	display: none;
 }
 
