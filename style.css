@@ -958,6 +958,26 @@ textarea {
 }
 
 
+
+
+
+/* CUSTOM */
+/* CUSTOM */
+/* CUSTOM */
+/* CUSTOM */
+/* CUSTOM */
+/* CUSTOM */
+/* CUSTOM */
+/* CUSTOM */
+/* CUSTOM */
+/* CUSTOM */
+
+
+
+/*--------------------------------------------------------------
+# Global
+--------------------------------------------------------------*/
+
 * {
 	margin: 0;
 	padding: 0;
@@ -980,10 +1000,15 @@ main {
 /* Typography
 --------------------------------------------- */
 
-h1,
+h1 {
+	margin: 0;
+	margin-block-start: 0;
+}
+
 p {
 	margin: 0;
 	margin-block-start: 0;
+	margin-block-end: 30px;
 }
 
 h1 {
@@ -1065,31 +1090,58 @@ li:hover {
 	text-decoration: underline;
 }
 
-
-
-
-
-/* CUSTOM */
-/* CUSTOM */
-/* CUSTOM */
-/* CUSTOM */
-/* CUSTOM */
-/* CUSTOM */
-/* CUSTOM */
-/* CUSTOM */
-/* CUSTOM */
-/* CUSTOM */
-
-
-
-
-* {
-	margin: 0; padding: 0;
-}
-
 .skip-link {
 	display: none;
 }
+
+.site-title {
+	margin: 0;
+  position: fixed;
+  top: 50%;
+  left: 42.5%;
+  transform: translate(50%, 50%) rotate(-90deg);
+	z-index: 2000;
+}
+
+.site-main {
+	height: 100vh;
+}
+
+#central {
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+	margin: 38px 20px;
+	
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	column-gap: 20px;
+}
+
+.header {
+	text-align: center;
+	margin-bottom: 16px;
+	text-transform: uppercase;
+	font-size: 12px;
+}
+
+/*--------------------------------------------------------------
+# Hero Section
+--------------------------------------------------------------*/
+
+#heroImage {
+	width: 100vw;
+  height: 100vh;
+}
+
+#heroImage img {
+	width: 100vw;
+  height: 100vh;
+}
+
+/*--------------------------------------------------------------
+# Splash
+--------------------------------------------------------------*/
 
 .page-template-splash {
 	overflow: hidden;
@@ -1108,4 +1160,115 @@ li:hover {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+}
+
+/*--------------------------------------------------------------
+# Colonna Sinistra
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# Colonna Centrale
+--------------------------------------------------------------*/
+
+.page-template-futurehome .news {
+	margin-bottom: 60px;
+}
+
+.page-template-futurehome .news p {
+	margin-block-end: 0;
+}
+
+.page-template-futurehome .news .event-header {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+.page-template-futurehome .news .event-header .post-categories {
+	text-align: right;
+	font-size: 15px;
+}
+
+/*--------------------------------------------------------------
+# Colonna Destra
+--------------------------------------------------------------*/
+
+.about {
+	margin-bottom: 5%;
+}
+
+.page-template-futurehome .carousel-cell {
+  width: 66%;
+  height: 200px;
+  margin-right: 10px;
+  border-radius: 5px;
+  counter-increment: carousel-cell;
+}
+
+.flickity-button {
+	display: none;
+}
+
+/*--------------------------------------------------------------
+# News
+--------------------------------------------------------------*/
+
+.single-news {
+	margin: 0; padding: 0;
+}
+
+.single-news .site-title {
+	display: none;
+}
+
+.single-news article {
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	column-gap: 20px;
+}
+
+.single-news .post-thumbnail {
+	grid-column-start: 1;
+  grid-column-end: 7;
+}
+
+.single-news .entry-header {
+	display: none;
+}
+
+.single-news .entry-title {
+	font-size: 36px;
+	line-height: 30px;
+}
+
+.single-news .header {
+	font-size: 36px;
+	line-height: 30px;
+	grid-column-start: 2;
+  grid-column-end: 4;
+	text-align: left;
+}
+
+.single-news .entry-content {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	column-gap: 20px;
+	grid-column-start: 2;
+  grid-column-end: 6;
+}
+
+.single-news .entry-content .info {
+	grid-column-start: 1;
+  grid-column-end: 5;
+}
+
+.single-news .entry-content .side {
+	grid-column-start: 5;
+  grid-column-end: 6;
+}
+
+.single-news .entry-content .side .date {
+	border-top: 1px solid #000000;
+	border-bottom: 1px solid #000000;
+	padding-top: 9px;
+	padding-bottom: 42px;
 }

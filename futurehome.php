@@ -20,38 +20,47 @@ get_header();
 			<div class="col" id="sinistra">
 				<h6 class="header">Calendar</h6>
 			</div>
-
 			<div class="col" id="centrale">
 				<h6 class="header">News</h6>
 				<?php 
-				$args = array(
-					'post_type' => 'news',
-					'post_status' => 'publish',
-					'orderby' => 'date',
-                    'order' => 'DESC',
-					'posts_per_page' => -1,
-				);
-				$arr_posts = new WP_Query( $args );
-				
-				if ( $arr_posts->have_posts() ) :
+					$args = array(
+						'post_type' => 'news',
+						'post_status' => 'publish',
+						'orderby' => 'date',
+						'order' => 'DESC',
+						'posts_per_page' => 10,
+					);
+					$arr_posts = new WP_Query( $args );
 					
-					while ( $arr_posts->have_posts() ) :
-						$arr_posts->the_post();
-						?>
-						<article class="carousel-cell" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-							
-						</article>
-						<?php
-					endwhile;
-				endif; ?>
+					if ( $arr_posts->have_posts() ) :
+						
+						while ( $arr_posts->have_posts() ) :
+							$arr_posts->the_post();
+							?>
+							<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+								<div class="event-header">
+									<a href="<?php the_permalink(); ?>">
+										<span class="title"><?php print the_title(); ?></span>
+										<span class="date">&#91;<?php the_field('date'); ?>&#93;</span>
+									</a>
+									<?php the_category(); ?>
+								</div>
+								<div class="summary">
+									<p class="paragraph"><?php the_field('text'); ?></p>
+								</div>
+							</article>
+							<?php
+						endwhile;
+					endif; 
+				?>
 			</div>
-			<div class="col" id="destra">
+			<div class="col" id="destra" style="padding: 0 20px;">
 				<h6 class="header">About</h6>
-				<div class="about"><?php the_field('about'); ?></div>
+				<div class="about"><?php the_field('about', 21); ?></div>
 				
 				<div class="carousel" data-flickity='{ "wrapAround": true }'>
-					<?php if( have_rows('carousel') ): ?>
-						<?php while( have_rows('carousel') ): the_row(); 
+					<?php if( have_rows('carousel', 21) ): ?>
+						<?php while( have_rows('carousel', 21) ): the_row(); 
 
 							// Load sub field value.
 							$image = get_sub_field('image');
