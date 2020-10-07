@@ -17,7 +17,7 @@ get_header();
 		</section>
 
 		<section id="central">
-			<div class="col">
+			<div class="col" id="sinistra">
 				<p class="header">Calendar</p>
 				<p>
 				Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem voluptates suscipit vero perferendis, odio officiis doloribus quae voluptatum debitis sint reiciendis, expedita, saepe eligendi esse numquam! Odio aperiam quidem delectus?
@@ -52,7 +52,7 @@ get_header();
 				Nulla rerum doloribus pariatur fugit necessitatibus libero explicabo molestias eum excepturi laboriosam quos dolores animi quasi dicta, maxime deserunt! Maiores veritatis cumque illo ad. Libero odio necessitatibus delectus dolorem corporis.
 				</p>
 			</div>
-			<div class="col">
+			<div class="col" id="centrale">
 				<p class="header">Information</p>
 				<p>
 				Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem voluptates suscipit vero perferendis, odio officiis doloribus quae voluptatum debitis sint reiciendis, expedita, saepe eligendi esse numquam! Odio aperiam quidem delectus?
@@ -87,21 +87,11 @@ get_header();
 				Nulla rerum doloribus pariatur fugit necessitatibus libero explicabo molestias eum excepturi laboriosam quos dolores animi quasi dicta, maxime deserunt! Maiores veritatis cumque illo ad. Libero odio necessitatibus delectus dolorem corporis.
 				</p>
 			</div>
-			<div class="col">
+			<div class="col" id="destra">
 				<p class="header">Space</p>
-				<p>
-				The gallery’s program explores many expressions of contemporary art research, 
-				focusing both on new generations of artists and on those already internationally acclaimed. 
-				Marignana Arte is also active in international collaborations that foresee the development of 
-				projects with private and public institutions. The gallery’s program explores many expressions of 
-				contemporary art research, focusing both on new generations of artists and on those already 
-				internationally acclaimed. Marignana Arte is also active in international collaborations that foresee 
-				the development of projects with private and public institutions.
-				</p>
-
+				<div class="about"><?php the_field('about'); ?></div>
 				<div class="carousel" data-flickity='{ "wrapAround": true }'>
 					<?php if( have_rows('carousel') ): ?>
-						<ul>
 						<?php while( have_rows('carousel') ): the_row(); 
 
 							// Load sub field value.
@@ -113,7 +103,6 @@ get_header();
 								</div>
 
 						<?php endwhile; ?>
-						</ul>
 					<?php endif; ?>
 				</div>
 			</div>
