@@ -20,15 +20,16 @@ get_header();
 			<div class="col" id="sinistra">
 				<h6 class="header">Calendar</h6>
 			</div>
+
 			<div class="col" id="centrale">
 				<h6 class="header">News</h6>
 				<?php 
 				$args = array(
-					'post_type' => 'success-stories',
+					'post_type' => 'news',
 					'post_status' => 'publish',
 					'orderby' => 'date',
                     'order' => 'DESC',
-					'posts_per_page' => 10,
+					'posts_per_page' => -1,
 				);
 				$arr_posts = new WP_Query( $args );
 				
@@ -38,24 +39,11 @@ get_header();
 						$arr_posts->the_post();
 						?>
 						<article class="carousel-cell" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-							<a href="<?php the_permalink(); ?>">
-								<div class="event-cover">
-									<?php
-									if ( has_post_thumbnail() ) :
-										the_post_thumbnail( '' );
-									endif;
-									?>
-								</div>
-								<div class="event-header">
-									<p class="category"><?php the_category(); ?></p>
-									<a href="<?php the_permalink(); ?>"><h5 class="title"><?php print the_title(); ?></h5></a>
-								</div>
-							</a>
+							
 						</article>
 						<?php
 					endwhile;
 				endif; ?>
-			</div>
 			</div>
 			<div class="col" id="destra">
 				<h6 class="header">About</h6>
@@ -77,6 +65,7 @@ get_header();
 					<?php endif; ?>
 				</div>
 			</div>
+
 		</section>
 
 	</main><!-- #main -->

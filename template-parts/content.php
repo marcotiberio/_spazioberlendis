@@ -4,12 +4,13 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package spazioberlendis
+ * @package _motius
  */
 
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+	<?php _motius_post_thumbnail(); ?>
 	<header class="entry-header">
 		<?php
 		if ( is_singular() ) :
@@ -20,16 +21,19 @@
 
 		if ( 'post' === get_post_type() ) :
 			?>
-			<div class="entry-meta">
-				<?php
-				spazioberlendis_posted_on();
-				spazioberlendis_posted_by();
-				?>
-			</div><!-- .entry-meta -->
 		<?php endif; ?>
+		<?php
+			$header = get_field('header');
+			if( $header ): ?>
+				<p class="intro"><?php echo $header['intro']; ?></p>
+				<p class="tag"><?php the_tags(); ?></p>
+				<p class="date"><?php echo date('M Y'); ?></p>
+				<div class="client">
+					<span>Client</span> 
+					<span><?php echo $header['client']; ?></span>
+				</div>
+			<?php endif; ?>
 	</header><!-- .entry-header -->
-
-	<?php spazioberlendis_post_thumbnail(); ?>
 
 	<div class="entry-content">
 		<?php
@@ -37,7 +41,7 @@
 			sprintf(
 				wp_kses(
 					/* translators: %s: Name of current post. Only visible to screen readers */
-					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'spazioberlendis' ),
+					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', '_motius' ),
 					array(
 						'span' => array(
 							'class' => array(),
@@ -50,14 +54,30 @@
 
 		wp_link_pages(
 			array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'spazioberlendis' ),
+				'before' => '<div class="page-links">' . esc_html__( 'Pages:', '_motius' ),
 				'after'  => '</div>',
 			)
 		);
 		?>
+		<?php
+			$main = get_field('main');
+			if( $main ): ?>
+				<div class="info">
+					<div class="title">
+						<h1 class="header"><?php echo $main['titolo']; ?></h1>
+					</div>
+					<div class="text">
+						<p class="paragraph"><?php echo $main['testo']; ?></p>
+					</div>
+				</div>
+				<div class="side">
+					<div class="data">
+						<p><?php echo $main['data']; ?></p>
+					</div>
+				</div>
+			<?php endif; ?>
+
 	</div><!-- .entry-content -->
 
-	<footer class="entry-footer">
-		<?php spazioberlendis_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
+
 </article><!-- #post-<?php the_ID(); ?> -->
