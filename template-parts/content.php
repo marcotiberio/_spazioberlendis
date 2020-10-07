@@ -4,13 +4,13 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package _motius
+ * @package _spazioberlendis
  */
 
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<?php _motius_post_thumbnail(); ?>
+	<?php spazioberlendis_post_thumbnail(); ?>
 	<header class="entry-header">
 		<?php
 		if ( is_singular() ) :
@@ -22,17 +22,6 @@
 		if ( 'post' === get_post_type() ) :
 			?>
 		<?php endif; ?>
-		<?php
-			$header = get_field('header');
-			if( $header ): ?>
-				<p class="intro"><?php echo $header['intro']; ?></p>
-				<p class="tag"><?php the_tags(); ?></p>
-				<p class="date"><?php echo date('M Y'); ?></p>
-				<div class="client">
-					<span>Client</span> 
-					<span><?php echo $header['client']; ?></span>
-				</div>
-			<?php endif; ?>
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">
@@ -71,7 +60,7 @@
 					</div>
 				</div>
 				<div class="side">
-					<div class="data">
+					<div class="date">
 						<p><?php echo $main['data']; ?></p>
 					</div>
 				</div>
