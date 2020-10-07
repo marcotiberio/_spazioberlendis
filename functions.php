@@ -143,6 +143,14 @@ function spazioberlendis_scripts() {
 	wp_enqueue_style( 'spazioberlendis-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_style_add_data( 'spazioberlendis-style', 'rtl', 'replace' );
 
+	wp_deregister_script( 'jquery' );
+	wp_enqueue_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js', array(), null, true);
+
+	wp_enqueue_script( 'flickityjs', get_template_directory_uri() . '/js/flickity.pkgd.min.js', array( 'jquery' ), '1.9.0', true );
+	wp_enqueue_script( 'flickityjs-init', get_template_directory_uri(). '/js/flickity-docs.min.js', array( 'flickityjs' ), '1.9.0', true );
+		
+	wp_enqueue_style( 'flickitycss', get_template_directory_uri() . '/css/flickity.min.css', 'all');
+
 	wp_enqueue_script( 'spazioberlendis-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
