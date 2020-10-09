@@ -17,8 +17,45 @@ get_header();
 		</section>
 
 		<section id="central">
-			<div class="col" id="sinistra">
+			<div class="col" id="sinistra" style="padding: 0 20px;">
 				<h6 class="header">Calendar</h6>
+				<?php 
+					$args = array(
+						'post_type' => 'post',
+						'post_status' => 'publish',
+						'orderby' => 'date',
+						'order' => 'DESC',
+						'posts_per_page' => 1,
+					);
+					$arr_posts = new WP_Query( $args );
+					
+					if ( $arr_posts->have_posts() ) :
+						
+						while ( $arr_posts->have_posts() ) :
+							$arr_posts->the_post();
+							?>
+							<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+								<?php spazioberlendis_post_thumbnail(); ?>
+								<div class="event-header">
+									<span class="date"><?php the_field('opening'); ?></span>
+									<span class="time">h <?php the_field('time'); ?>:00</span>
+								</div>
+								<a href="<?php the_permalink(); ?>">
+									<span class="title"><?php print the_title(); ?></span>
+								</a>
+								<div class="summary">
+									<a href="<?php the_permalink(); ?>">
+										<span class="paragraph"><?php $summary = get_field('text');
+										$pos=strpos($summary, ' ', 300);
+										echo substr($summary,0,$pos ); ?></span><span>...</span>
+										<p class="read-more">Read More</p>
+									</a>
+								</div>
+							</article>
+							<?php
+						endwhile;
+					endif; 
+				?>
 				<?php echo do_shortcode('[clndr id=mini-calendar]'); ?>
 			</div>
 			<div class="col" id="centrale">
@@ -44,7 +81,7 @@ get_header();
 										<span class="title"><?php print the_title(); ?></span>
 										<span class="date">&#91;<?php the_field('date'); ?>&#93;</span>
 									</a>
-									<?php the_category(); ?>
+									<p class="type"><?php the_field('type'); ?></p>
 								</div>
 								<div class="summary">
 									<a href="<?php the_permalink(); ?>">

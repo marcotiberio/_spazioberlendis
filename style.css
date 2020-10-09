@@ -1183,9 +1183,9 @@ li:hover {
 	grid-template-columns: 1fr 1fr;
 }
 
-.page-template-futurehome .news .event-header .post-categories {
+.page-template-futurehome .news .event-header .type {
 	text-align: right;
-	font-size: 15px;
+	font-size: 12px;
 }
 
 /*--------------------------------------------------------------

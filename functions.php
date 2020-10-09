@@ -152,6 +152,7 @@ function spazioberlendis_scripts() {
 	wp_enqueue_style( 'flickitycss', get_template_directory_uri() . '/css/flickity.min.css', 'all');
 
 	wp_enqueue_script( 'spazioberlendis-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'spazioberlendis-script', get_template_directory_uri() . '/js/script.js', array( 'jquery' ), '20151215', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
