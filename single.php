@@ -12,6 +12,8 @@ get_header();
 
 	<main id="primary" class="site-main">
 
+		<div id="close" onclick="window.location.href='https://www.spazioberlendis.it/home/#central'">X</div>
+
 		<?php
 		while ( have_posts() ) :
 			the_post();

@@ -19,6 +19,7 @@ get_header();
 		<section id="central">
 			<div class="col" id="sinistra">
 				<h6 class="header">Calendar</h6>
+				<?php echo do_shortcode('[clndr id=mini-calendar]'); ?>
 			</div>
 			<div class="col" id="centrale">
 				<h6 class="header">News</h6>
@@ -46,7 +47,9 @@ get_header();
 									<?php the_category(); ?>
 								</div>
 								<div class="summary">
-									<p class="paragraph"><?php the_field('text'); ?></p>
+									<a href="<?php the_permalink(); ?>">
+										<p class="paragraph"><?php the_field('text'); ?></p>
+									</a>
 								</div>
 							</article>
 							<?php
