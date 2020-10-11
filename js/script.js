@@ -1,19 +1,40 @@
 // Search News
 
-$(document).ready(function(){
-    $('.article-centrale').show();
-    $('#search').click(function(){
-        $('.article-centrale').show();
-        var txt = $('#search-criteria').val();
-        $('.article-centrale').each(function(){
-        if($(this).text().toUpperCase().indexOf(txt.toUpperCase()) != -1){
-            $(this).fadeIn();
-        } else {
-            $(this).fadeOut();
-        }
-        });
-    });
-});
+// $(document).ready(function(){
+//     $('.article-centrale').show();
+//     $('#search').click(function(){
+//         $('.article-centrale').show();
+//         var txt = $('#search-criteria').val();
+//         $('.article-centrale').each(function(){
+//         if($(this).text().toUpperCase().indexOf(txt.toUpperCase()) != -1){
+//             $(this).fadeIn();
+//         } else {
+//             $(this).fadeOut();
+//         }
+//         });
+//     });
+// });
+
+// ALternative Search News
+function functionSearch() {
+    // Declare variables
+    var input, filter, ul, li, article, a, i, txtValue;
+    input = document.getElementById('searchInput');
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("newsList");
+    li = ul.getElementsByTagName('li');
+  
+    // Loop through all list items, and hide those who don't match the search query
+    for (i = 0; i < li.length; i++) {
+      article = li[i].getElementsByTagName("article")[0];
+      txtValue = article.textContent || article.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        li[i].style.display = "";
+      } else {
+        li[i].style.display = "none";
+      }
+    }
+  }
 
 // Show/Hide About
 

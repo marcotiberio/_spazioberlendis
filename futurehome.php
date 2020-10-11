@@ -59,13 +59,14 @@ get_header();
 			</div>
 			<div class="col" id="centrale">
 				<div class="section-header">
-					<div class="search-form">
+					<input type="text" id="searchInput" onkeyup="functionSearch()" placeholder="NEWS">
+					<!-- <div class="search-form">
 						<input type="button" id="search" value="🔍"/>
 						<input type="text" id="search-criteria" placeholder="NEWS" onfocus="this.value=''"/>
 						<div></div>
-					</div>
+					</div> -->
 				</div>
-				<div class="inner">
+				<ul class="inner" id="newsList">
 					<?php 
 						$args = array(
 							'post_type' => 'news',
@@ -81,25 +82,27 @@ get_header();
 							while ( $arr_posts->have_posts() ) :
 								$arr_posts->the_post();
 								?>
-								<article class="article-centrale" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-									<div class="event-header" style="display: grid; grid-template-columns: 1fr 1fr;">
-										<a href="<?php the_permalink(); ?>">
-											<span class="title"><?php print the_title(); ?></span>
-											<span class="date">&#91;<?php the_field('date'); ?>&#93;</span>
-										</a>
-										<p class="type" style="text-align: right; font-size: 12px; margin-block-end: 0;"><?php the_field('type'); ?></p>
-									</div>
-									<div class="summary">
-										<a href="<?php the_permalink(); ?>">
-											<p class="paragraph"><?php the_field('text'); ?></p>
-										</a>
-									</div>
-								</article>
+								<li>
+									<article class="article-centrale" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+										<div class="event-header" style="display: grid; grid-template-columns: 1fr 1fr;">
+											<a href="<?php the_permalink(); ?>">
+												<span class="title"><?php print the_title(); ?></span>
+												<span class="date">&#91;<?php the_field('date'); ?>&#93;</span>
+											</a>
+											<p class="type" style="text-align: right; font-size: 12px; margin-block-end: 0;"><?php the_field('type'); ?></p>
+										</div>
+										<div class="summary">
+											<a href="<?php the_permalink(); ?>">
+												<p class="paragraph"><?php the_field('text'); ?></p>
+											</a>
+										</div>
+									</article>
+								</li>
 								<?php
 							endwhile;
 						endif; 
 					?>
-				</div>
+				</ul>
 			</div>
 			<div class="col" id="destra" style="padding: 0 20px;">
 				<h6 class="header" id="headerAbout">About</h6>
