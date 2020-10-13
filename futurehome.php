@@ -15,9 +15,27 @@ get_header();
 		<section id="hero" style="back">
 		</section>
 
+		
+
 		<section id="central">
+
+			<nav id="site-navigation" class="main-navigation">
+				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'spazioberlendis' ); ?></button>
+				<?php
+				wp_nav_menu(
+					array(
+						'theme_location' => 'menu-1',
+						'menu_id'        => 'primary-menu',
+					)
+				);
+				?>
+			</nav><!-- #site-navigation -->
+		
 			<div class="col" id="sinistra" style="padding: 0 20px;">
-				<h6 class="header" id="headerCalendar">Calendar</h6>
+				<div class="section-header">
+					<p id="headerCalendar">CALENDAR</p>
+					<input type="text" id="searchInputCalendar" onkeyup="functionSearchCalendar()" placeholder="CALENDAR">
+				</div>
 				<?php 
 					$args = array(
 						'post_type' => 'post',
@@ -33,7 +51,7 @@ get_header();
 						while ( $arr_posts->have_posts() ) :
 							$arr_posts->the_post();
 							?>
-							<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+							<article style="margin-top: 10vh;" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 								<?php spazioberlendis_post_thumbnail(); ?>
 								<div class="event-header">
 									<span class="date"><?php the_field('opening'); ?></span>
@@ -56,15 +74,48 @@ get_header();
 					endif; 
 				?>
 				<?php echo do_shortcode('[clndr id=mini-calendar]'); ?>
+				<ul class="inner" id="newsCalendar">
+					<?php 
+						$args = array(
+							'post_type' => 'news',
+							'post_status' => 'publish',
+							'orderby' => 'date',
+							'order' => 'DESC',
+							'posts_per_page' => 10,
+						);
+						$arr_posts = new WP_Query( $args );
+						
+						if ( $arr_posts->have_posts() ) :
+							
+							while ( $arr_posts->have_posts() ) :
+								$arr_posts->the_post();
+								?>
+								<li>
+									<article class="article-centrale" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+										<div class="event-header" style="display: grid; grid-template-columns: 1fr 1fr;">
+											<a href="<?php the_permalink(); ?>">
+												<span class="title"><?php print the_title(); ?></span>
+												<span class="date">&#91;<?php the_field('date'); ?>&#93;</span>
+											</a>
+											<p class="type" style="text-align: right; font-size: 12px; margin-block-end: 0;"><?php the_field('type'); ?></p>
+										</div>
+										<div class="summary">
+											<a href="<?php the_permalink(); ?>">
+												<p class="paragraph"><?php the_field('text'); ?></p>
+											</a>
+										</div>
+									</article>
+								</li>
+								<?php
+							endwhile;
+						endif; 
+					?>
+				</ul>
 			</div>
 			<div class="col" id="centrale">
 				<div class="section-header">
-					<input type="text" id="searchInput" onkeyup="functionSearch()" placeholder="NEWS">
-					<!-- <div class="search-form">
-						<input type="button" id="search" value="🔍"/>
-						<input type="text" id="search-criteria" placeholder="NEWS" onfocus="this.value=''"/>
-						<div></div>
-					</div> -->
+					<p id="headerNews">NEWS</p>
+					<input type="text" id="searchInputNews" onkeyup="functionSearchNews()" placeholder="NEWS">
 				</div>
 				<ul class="inner" id="newsList">
 					<?php 

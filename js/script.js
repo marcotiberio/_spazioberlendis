@@ -15,13 +15,35 @@
 //     });
 // });
 
-// ALternative Search News
-function functionSearch() {
+// Alternative Search News
+function functionSearchNews() {
     // Declare variables
     var input, filter, ul, li, article, a, i, txtValue;
-    input = document.getElementById('searchInput');
+    input = document.getElementById('searchInputNews');
     filter = input.value.toUpperCase();
     ul = document.getElementById("newsList");
+    li = ul.getElementsByTagName('li');
+  
+    // Loop through all list items, and hide those who don't match the search query
+    for (i = 0; i < li.length; i++) {
+      article = li[i].getElementsByTagName("article")[0];
+      txtValue = article.textContent || article.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        li[i].style.display = "";
+      } else {
+        li[i].style.display = "none";
+      }
+    }
+  }
+
+
+// Alternative Search Calendar
+function functionSearchCalendar() {
+    // Declare variables
+    var input, filter, ul, li, article, a, i, txtValue;
+    input = document.getElementById('searchInputCalendar');
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("newsCalendar");
     li = ul.getElementsByTagName('li');
   
     // Loop through all list items, and hide those who don't match the search query
@@ -53,7 +75,7 @@ function showabout() {
 $(document).ready(function(){
     $( "#headerCalendar" ).click(function() {
         $( "#centrale" ).animate({
-            top: "93vh",
+            top: "90vh",
             }, 200 );
         });
     });
@@ -61,7 +83,7 @@ $(document).ready(function(){
 $(document).ready(function(){
     $( "#headerCalendar" ).click(function() {
         $( "#destra" ).animate({
-            top: "96vh",
+            top: "95vh",
             }, 200 );
         });
     });
@@ -69,7 +91,7 @@ $(document).ready(function(){
 $(document).ready(function(){
     $( "#headerNews" ).click(function() {
         $( "#destra" ).animate({
-            top: "96vh",
+            top: "95vh",
             }, 200 );
         });
     });
@@ -77,7 +99,7 @@ $(document).ready(function(){
 $(document).ready(function(){
     $( "#headerCalendar" ).click(function() {
         $( "#sinistra" ).animate({
-            top: "2vh",
+            top: "1vh",
             }, 200 );
         });
     });
@@ -85,7 +107,7 @@ $(document).ready(function(){
 $(document).ready(function(){
     $( "#headerNews" ).click(function() {
         $( "#centrale" ).animate({
-            top: "5vh",
+            top: "6vh",
             }, 200 );
         });
     });
@@ -93,7 +115,7 @@ $(document).ready(function(){
 $(document).ready(function(){
     $( "#headerAbout" ).click(function() {
         $( "#destra" ).animate({
-            top: "8vh",
+            top: "11vh",
             }, 200 );
         });
     });
@@ -101,7 +123,7 @@ $(document).ready(function(){
 $(document).ready(function(){
     $( "#headerAbout" ).click(function() {
         $( "#centrale" ).animate({
-            top: "5vh",
+            top: "6vh",
             }, 200 );
         });
     });
