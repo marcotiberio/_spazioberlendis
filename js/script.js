@@ -69,6 +69,15 @@ function showabout() {
     }
 }
 
+// Show/Hide Calendar on Search
+
+$(document).ready(function(){
+    $( "#searchInputCalendar" ).click(function() {
+        $( "#post-781" ).fadeToggle();
+        $( "#miniCalendar" ).fadeToggle();
+    });
+});
+
 
 // Types
 

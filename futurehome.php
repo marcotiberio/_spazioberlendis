@@ -40,9 +40,13 @@ get_header();
 					$args = array(
 						'post_type' => 'post',
 						'post_status' => 'publish',
-						'orderby' => 'date',
-						'order' => 'DESC',
-						'posts_per_page' => 1,
+						'posts_per_page' => -1,
+						'meta_query' => array(
+							array(
+								'key'   => 'todays_event',
+								'value' => '1',
+							)
+						)
 					);
 					$arr_posts = new WP_Query( $args );
 					
@@ -51,11 +55,12 @@ get_header();
 						while ( $arr_posts->have_posts() ) :
 							$arr_posts->the_post();
 							?>
-							<article style="margin-top: 10vh;" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-								<?php spazioberlendis_post_thumbnail(); ?>
-								<div class="event-header">
+							<article style="margin-top: 5vh;" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+								<a href="<?php the_permalink(); ?>"><?php spazioberlendis_post_thumbnail(); ?></a>
+								<div class="event-header" style="display: flex; flex-direction: row; flex-wrap: wrap; width: 100%;">
 									<span class="date"><?php the_field('opening'); ?></span>
 									<span class="time">h <?php the_field('time'); ?>:00</span>
+									<span class="type" style="text-align: right; font-size: 12px; margin-block-end: 0;"><?php the_field('type'); ?></span>
 								</div>
 								<a href="<?php the_permalink(); ?>">
 									<span class="title"><?php print the_title(); ?></span>
@@ -65,7 +70,6 @@ get_header();
 										<span class="paragraph"><?php $summary = get_field('text');
 										$pos=strpos($summary, ' ', 300);
 										echo substr($summary,0,$pos ); ?></span><span>...</span>
-										<p class="read-more">Read More</p>
 									</a>
 								</div>
 							</article>
@@ -73,15 +77,25 @@ get_header();
 						endwhile;
 					endif; 
 				?>
-				<?php echo do_shortcode('[clndr id=mini-calendar]'); ?>
+
+				<div id="miniCalendar">
+					<?php echo do_shortcode('[clndr id=mini-calendar]'); ?>
+				</div>
+
 				<ul class="inner" id="newsCalendar">
 					<?php 
 						$args = array(
-							'post_type' => 'news',
+							'post_type' => 'post',
 							'post_status' => 'publish',
 							'orderby' => 'date',
 							'order' => 'DESC',
-							'posts_per_page' => 10,
+							'posts_per_page' => -1,
+							'meta_query' => array(
+								array(
+									'key'   => 'todays_event',
+									'value' => '0',
+								)
+							)
 						);
 						$arr_posts = new WP_Query( $args );
 						
@@ -91,17 +105,19 @@ get_header();
 								$arr_posts->the_post();
 								?>
 								<li>
-									<article class="article-centrale" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-										<div class="event-header" style="display: grid; grid-template-columns: 1fr 1fr;">
+									<article class="article-centrale <?php the_field('type'); ?>" id="post-<?php the_ID(); ?>">
+										<a href="<?php the_permalink(); ?>"><?php spazioberlendis_post_thumbnail(); ?></a>
+										<div class="event-header" <?php post_class(); ?>>
 											<a href="<?php the_permalink(); ?>">
 												<span class="title"><?php print the_title(); ?></span>
 												<span class="date">&#91;<?php the_field('date'); ?>&#93;</span>
+												<span class="time">h <?php the_field('time'); ?>:00</span>
 											</a>
-											<p class="type" style="text-align: right; font-size: 12px; margin-block-end: 0;"><?php the_field('type'); ?></p>
+											<p class="type"><?php the_field('type'); ?></p>
 										</div>
 										<div class="summary">
 											<a href="<?php the_permalink(); ?>">
-												<p class="paragraph"><?php the_field('text'); ?></p>
+												<p class="paragraph"><?php the_field('summary'); ?></p>
 											</a>
 										</div>
 									</article>

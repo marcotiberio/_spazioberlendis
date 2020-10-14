@@ -1257,6 +1257,47 @@ li:hover {
 	font-size: 15px;
 }
 
+#sinistra .inner .open .event-header {
+	border-top: 1px solid #000000;
+	border-bottom: 1px solid #000000;
+}
+
+#sinistra .post-thumbnail img:hover {
+	opacity: 0.8;
+}
+
+#sinistra .inner {
+	margin-top: 5vh;
+}
+
+#sinistra .inner .event-header {
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+}
+
+#sinistra .inner .event-header .time {
+	text-align: left;
+	font-size: 12px;
+	margin-block-end: 0;
+	display: inline;
+	vertical-align: top;
+}
+
+#sinistra .inner .open .event-header {
+	padding: 20px 0;
+}
+
+#sinistra .inner .open .event-header .date,
+#sinistra .inner .open .event-header .time {
+	display: none;
+}
+
+#sinistra .inner .event-header .type {
+	text-align: right;
+	font-size: 12px;
+	margin-block-end: 0;
+}
+
 /* CLNDR */
 
 .calendar {
@@ -1407,6 +1448,8 @@ li:hover {
 }
 
 /* CLNDR */
+
+
 
 /*--------------------------------------------------------------
 # Colonna Centrale
