@@ -10,7 +10,26 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<?php spazioberlendis_post_thumbnail(); ?>
+
+		<!-- Swiper -->
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<?php if( have_rows('swiper') ): ?>
+					<?php while( have_rows('swiper') ): the_row(); 
+
+						// Load sub field value.
+						$image = get_sub_field('image');
+						?>
+						
+							<div class="swiper-slide" style="background-image: url(<?php echo esc_url( $image['url'] ); ?>);"></div>
+
+					<?php endwhile; ?>
+				<?php endif; ?>
+			</div>
+			<!-- Add Arrows -->
+			<div class="swiper-button-next"></div>
+			<div class="swiper-button-prev"></div>
+		</div>
 
 	<div class="entry-content">
 		<header class="entry-header">

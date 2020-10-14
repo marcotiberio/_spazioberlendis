@@ -1216,6 +1216,50 @@ li:hover {
 	/* Firefox */
 }
 
+.single .swiper-container {
+	grid-column-start: 1;
+	grid-column-end: 7;
+}
+
+.swiper-container {
+	width: 100vw;
+	height: 100vh;
+}
+
+.swiper-slide {
+	text-align: center;
+	font-size: 18px;
+	background: #fff;
+
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+
+	/* Center slide text vertically */
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+
+.swiper-button-next, 
+.swiper-button-prev {
+	color: #ffffff;
+}
+
+.swiper-button-next:focus, 
+.swiper-button-prev:focus {
+	outline: none;
+}
+
 /*--------------------------------------------------------------
 # Home
 --------------------------------------------------------------*/
