@@ -204,22 +204,26 @@ get_header();
 					</p>
 				</div>
 				<p class="read-more" id="readMore" onclick="showabout()">Read More</p>
-				
-				<div class="carousel" data-flickity='{ "wrapAround": true }'>
-					<?php if( have_rows('carousel', 21) ): ?>
-						<?php while( have_rows('carousel', 21) ): the_row(); 
 
-							// Load sub field value.
-							$image = get_sub_field('image');
-							?>
-							
-								<div class="carousel-cell">
-									<img id="image" src="<?php echo esc_url( $image['url'] ); ?>" alt="<?php echo esc_attr( $image['alt'] ); ?>" />
-								</div>
+				<!-- Swiper -->
+				<div class="swiper-container" id="swiperHome">
+					<div class="swiper-wrapper">
+						<?php if( have_rows('swiper', 21) ): ?>
+							<?php while( have_rows('swiper', 21) ): the_row(); 
 
-						<?php endwhile; ?>
-					<?php endif; ?>
+								// Load sub field value.
+								$image = get_sub_field('image');
+								?>
+								
+									<div class="swiper-slide" style="background-image: url(<?php echo esc_url( $image['url'] ); ?>);"></div>
+
+							<?php endwhile; ?>
+						<?php endif; ?>
+					</div>
+					<!-- Add Pagination -->
+					<div class="swiper-pagination"></div>
 				</div>
+				
 			</div>
 
 		</section>
