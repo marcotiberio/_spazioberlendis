@@ -78,6 +78,19 @@
 		<div class="side">
 			<div class="date">
 				<p><?php the_field('date'); ?></p>
+				<p><?php the_field('side_description'); ?></p>
+			</div>
+			<div class="additional-info">
+				<?php if( have_rows('additional_info_list') ): ?>
+					<ul>
+					<?php while( have_rows('additional_info_list') ): the_row(); 
+						?>
+						<li>
+							<p><?php the_sub_field('additional_info'); ?></p>
+						</li>
+					<?php endwhile; ?>
+					</ul>
+				<?php endif; ?>
 			</div>
 		</div>
 

@@ -152,14 +152,14 @@ get_header();
 								<li>
 									<article class="article-centrale" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 										<div class="event-header" style="display: grid; grid-template-columns: 1fr 1fr;">
-											<a href="<?php the_permalink(); ?>">
+											<a href="<?php the_field('news_link'); ?>" target="_blank">
 												<span class="title"><?php print the_title(); ?></span>
 												<span class="date">&#91;<?php the_field('date'); ?>&#93;</span>
 											</a>
 											<p class="type" style="text-align: right; font-size: 12px; margin-block-end: 0;"><?php the_field('type'); ?></p>
 										</div>
 										<div class="summary">
-											<a href="<?php the_permalink(); ?>">
+											<a href="<?php the_field('news_link'); ?>" target="_blank">
 												<p class="paragraph"><?php the_field('text'); ?></p>
 											</a>
 										</div>

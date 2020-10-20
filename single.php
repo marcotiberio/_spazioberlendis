@@ -12,7 +12,7 @@ get_header();
 
 	<main id="primary" class="site-main">
 
-		<div id="close" onclick="window.location.href='https://www.spazioberlendis.it/home/#central'">X</div>
+		<div id="close" onclick="window.location.href='https://www.spazioberlendis.it/home/#central'">Close</div>
 
 		<?php
 		while ( have_posts() ) :
