@@ -12,7 +12,7 @@ get_header();
 ?>
 
 	<main id="primary" class="site-main">
-		<section id="hero" style="back">
+		<section id="hero">
 		</section>
 
 		
@@ -55,12 +55,13 @@ get_header();
 						while ( $arr_posts->have_posts() ) :
 							$arr_posts->the_post();
 							?>
-							<article style="margin-top: 5vh;" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-								<a href="<?php the_permalink(); ?>"><?php spazioberlendis_post_thumbnail(); ?></a>
+							<article style="margin-top: 44px;" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+								<?php $backgroundImg = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'post-image' );?>
+								<div class="post-thumbnail" style="background: url('<?php echo $backgroundImg[0]; ?>') no-repeat; background-size: cover; background-position: center;"></div>
 								<div class="event-header" style="display: flex; flex-direction: row; flex-wrap: wrap; width: 100%;">
 									<span class="date"><?php the_field('opening'); ?></span>
-									<span class="time">h <?php the_field('time'); ?>:00</span>
-									<span class="type" style="text-align: right; font-size: 12px; margin-block-end: 0;"><?php the_field('type'); ?></span>
+									<span class="time" style="text-align: right; font-size: 14px; margin-block-end: 0;">h <?php the_field('time'); ?>:00</span>
+									<span class="type" style="text-align: right; font-size: 14px; margin-block-end: 0;"><?php the_field('type'); ?></span>
 								</div>
 								<a href="<?php the_permalink(); ?>">
 									<span class="title"><?php print the_title(); ?></span>
@@ -106,7 +107,8 @@ get_header();
 								?>
 								<li>
 									<article class="article-centrale <?php the_field('type'); ?>" id="post-<?php the_ID(); ?>">
-										<a href="<?php the_permalink(); ?>"><?php spazioberlendis_post_thumbnail(); ?></a>
+									<?php $backgroundImg = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'post-image' );?>
+								<div class="post-thumbnail" style="background: url('<?php echo $backgroundImg[0]; ?>') no-repeat; background-size: cover; background-position: center;"></div>
 										<div class="event-header" <?php post_class(); ?>>
 											<a href="<?php the_permalink(); ?>">
 												<span class="title"><?php print the_title(); ?></span>
@@ -154,13 +156,12 @@ get_header();
 										<div class="event-header" style="display: grid; grid-template-columns: 1fr 1fr;">
 											<a href="<?php the_field('news_link'); ?>" target="_blank">
 												<span class="title"><?php print the_title(); ?></span>
-												<span class="date">&#91;<?php the_field('date'); ?>&#93;</span>
 											</a>
-											<p class="type" style="text-align: right; font-size: 12px; margin-block-end: 0;"><?php the_field('type'); ?></p>
+											<p class="type" style="text-align: right; font-size: 14px; margin-block-end: 0;"><?php the_field('type'); ?></p>
 										</div>
 										<div class="summary">
 											<a href="<?php the_field('news_link'); ?>" target="_blank">
-												<p class="paragraph"><?php the_field('text'); ?></p>
+												<?php the_field('text'); ?>
 											</a>
 										</div>
 									</article>
@@ -171,7 +172,7 @@ get_header();
 					?>
 				</ul>
 			</div>
-			<div class="col" id="destra" style="padding: 0 10px;">
+			<div class="col" id="destra" style="padding: 0 20px;">
 				<h6 class="header" id="headerAbout">About</h6>
 				<div class="about">
 					<p>Lo Spazio Berlendis è uno spazio dedicato all’arte, ma è anche un luogo di incontri, 

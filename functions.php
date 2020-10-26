@@ -104,6 +104,19 @@ if ( ! function_exists( 'spazioberlendis_setup' ) ) :
 endif;
 add_action( 'after_setup_theme', 'spazioberlendis_setup' );
 
+
+// This enables the function that lets you set new image sizes
+add_theme_support( 'post-thumbnails' );
+// These are the new image sizes we cooked up
+add_image_size( 'post-image', 520, 360 );
+// Now we register the size so it appears as an option within the editor
+add_filter( 'image_size_names_choose', 'my_custom_image_sizes' );
+function my_custom_image_sizes( $sizes ) {
+    return array_merge( $sizes, array(
+        'post-image' => __( 'Post Images' ),
+    ) );
+}
+
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
  *
