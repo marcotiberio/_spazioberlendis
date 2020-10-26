@@ -31,7 +31,7 @@ get_header();
 				?>
 			</nav><!-- #site-navigation -->
 		
-			<div class="col" id="sinistra" style="padding: 0 20px;">
+			<div class="col" id="sinistra" style="padding: 0 10px;">
 				<div class="section-header">
 					<p id="headerCalendar">CALENDAR</p>
 					<input type="text" id="searchInputCalendar" onkeyup="functionSearchCalendar()" placeholder="CALENDAR">
@@ -128,7 +128,7 @@ get_header();
 					?>
 				</ul>
 			</div>
-			<div class="col" id="centrale">
+			<div class="col" id="centrale" style="padding: 0 20px;">
 				<div class="section-header">
 					<p id="headerNews">NEWS</p>
 					<input type="text" id="searchInputNews" onkeyup="functionSearchNews()" placeholder="NEWS">
@@ -171,7 +171,7 @@ get_header();
 					?>
 				</ul>
 			</div>
-			<div class="col" id="destra" style="padding: 0 20px;">
+			<div class="col" id="destra" style="padding: 0 10px;">
 				<h6 class="header" id="headerAbout">About</h6>
 				<div class="about">
 					<p>Lo Spazio Berlendis è uno spazio dedicato all’arte, ma è anche un luogo di incontri, 

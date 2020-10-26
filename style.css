@@ -1096,8 +1096,8 @@ li:hover {
 }
 
 .logo {
+	position: fixed;
 	margin: 0;
-	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
@@ -1192,10 +1192,12 @@ li:hover {
 
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	column-gap: 20px;
+	column-gap: 30px;
 	overflow: hidden;
 	height: 100vh;
 	scroll-margin-top: 85px;
+	width: 100%;
+	max-width: 1920px;
 }
 
 #centrale,
