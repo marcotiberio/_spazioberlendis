@@ -1223,7 +1223,7 @@ li:hover {
 	position: -webkit-sticky;
 	position: sticky;
 	top: 0;
-	padding: 0 10px 30px 10px;
+	padding: 0 10px;
 	margin: 26px auto;
 
 	display: grid;
