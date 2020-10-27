@@ -55,13 +55,14 @@ get_header();
 						while ( $arr_posts->have_posts() ) :
 							$arr_posts->the_post();
 							?>
+							<a href="<?php the_permalink(); ?>">
 							<article style="margin-top: 44px;" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 								<?php $backgroundImg = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'post-image' );?>
 								<div class="post-thumbnail" style="background: url('<?php echo $backgroundImg[0]; ?>') no-repeat; background-size: cover; background-position: center;"></div>
 								<div class="event-header" style="display: flex; flex-direction: row; flex-wrap: wrap; width: 100%;">
 									<span class="date"><?php the_field('opening'); ?></span>
 									<span class="time" style="text-align: right; font-size: 14px; margin-block-end: 0;">h <?php the_field('time'); ?>:00</span>
-									<span class="type" style="text-align: right; font-size: 14px; margin-block-end: 0;"><?php the_field('type'); ?></span>
+									<span class="type" style="text-align: right; font-size: 14px; margin-block-end: 0; flex-grow: 4;"><?php the_field('type'); ?></span>
 								</div>
 								<a href="<?php the_permalink(); ?>">
 									<span class="title"><?php print the_title(); ?></span>
@@ -74,6 +75,7 @@ get_header();
 									</a>
 								</div>
 							</article>
+							</a>
 							<?php
 						endwhile;
 					endif; 
@@ -111,9 +113,9 @@ get_header();
 								<div class="post-thumbnail" style="background: url('<?php echo $backgroundImg[0]; ?>') no-repeat; background-size: cover; background-position: center;"></div>
 										<div class="event-header" <?php post_class(); ?>>
 											<a href="<?php the_permalink(); ?>">
-												<span class="title"><?php print the_title(); ?></span>
 												<span class="date">&#91;<?php the_field('date'); ?>&#93;</span>
 												<span class="time">h <?php the_field('time'); ?>:00</span>
+												<span class="title"><?php print the_title(); ?></span>
 											</a>
 											<p class="type"><?php the_field('type'); ?></p>
 										</div>

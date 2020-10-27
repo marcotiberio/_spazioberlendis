@@ -31,11 +31,11 @@
 			<div class="col"></div>
 			<div class="col">
 				<div class="left">
-					<p>Facebook</p>
-					<p>Instagram</p>
+					<p class="link" onclick="window.open('https://www.wikipedia.org/')">Facebook</p>
+					<p class="link" onclick="window.open('https://www.wikipedia.org/')">Instagram</p>
 				</div>
 				<div class="right">
-					<p>info@spazioberlendis.it</p>
+					<p class="link" onclick="window.open('mailto:info@spazioberlendis.it')">info@spazioberlendis.it</p>
 					<p>T_+39_041_7099560</p>
 				</div>
 			</div>
