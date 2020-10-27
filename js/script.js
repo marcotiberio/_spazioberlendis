@@ -163,9 +163,14 @@ var swiper = new Swiper('#swiperHome', {
     },
   });
 
-
-
-
+$(document).ready(function(){
+    $( "#showFooter" ).mouseenter(function() {
+        $( "#colophon" ).css("display", "grid");
+    });
+    $("#showFooter").mouseleave(function(){
+        $("#colophon").css("display", "none");
+      });
+});
 
 
 $(document).ready(function(){

@@ -14,11 +14,34 @@
 	<script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
 	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
-	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			
-		</div><!-- .site-info -->
+	<div id="showFooter"></div>
+	
+	<footer id="colophon" class="site-footer" style="display: none;">
+		<div class="inner">
+			<div class="col">
+				<div class="left">
+					<p>Spazio_Berlendis_Srl</p>
+					<p>Cannaregio_3672</p>
+				</div>
+				<div class="right">
+					<p>PI_04573870278</p>
+					<p>Privacy & Cookies Policy</p>
+				</div>
+			</div>
+			<div class="col"></div>
+			<div class="col">
+				<div class="left">
+					<p>Facebook</p>
+					<p>Instagram</p>
+				</div>
+				<div class="right">
+					<p>info@spazioberlendis.it</p>
+					<p>T_+39_041_7099560</p>
+				</div>
+			</div>
+		</div>
 	</footer><!-- #colophon -->
+
 </div><!-- #page -->
 
 <?php wp_footer(); ?>

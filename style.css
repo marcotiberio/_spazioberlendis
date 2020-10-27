@@ -1108,6 +1108,61 @@ li:hover {
 	font-size: 14px;
 }
 
+/* Footer */
+
+
+#colophon .site-footer {
+	display: none;
+}
+
+#showFooter {
+	position: fixed;
+	background-color: transparent;
+	width: 100vw;
+	height: 10vh;
+	bottom: 0vh;
+	left: 0;
+	margin: 0;
+	z-index: 100;
+}
+
+#colophon {
+	position: fixed;
+	width: 100vw;
+	bottom: 0;
+	left: 0;
+	margin: 0;
+	padding: 0;
+	z-index: 200;
+}
+
+#colophon .inner {
+	padding: 0 10px;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	column-gap: 20px;
+	background-color: #ffffff;
+}
+
+#colophon .col {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-columns: repeat(2, 1fr);
+	padding: 20px;
+}
+
+#colophon .right {
+	text-align: right;
+}
+
+#colophon p {
+	font-size: 16px;
+	line-height: 24px;
+	margin-block-end: 0;
+}
+
+/* Footer */
+
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
@@ -1342,6 +1397,11 @@ li:hover {
 #sinistra .inner .event-header {
 	display: grid;
 	grid-template-columns: 2fr 1fr;
+	padding: 0 10px;
+}
+
+#sinistra .inner .event-header {
+	padding: 0 10px;
 }
 
 #sinistra .inner .event-header .time {
