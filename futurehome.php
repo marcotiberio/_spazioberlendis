@@ -13,6 +13,9 @@ get_header();
 
 	<main id="primary" class="site-main">
 		<section id="hero">
+			<video playsinline autoplay muted loop poster="https://www.spazioberlendis.it/wp-content/uploads/2020/10/2880px-Rio_dei_Mendicanti_Venice-scaled.jpg" id="coverVideo">
+				<source src="https://www.spazioberlendis.it/wp-content/uploads/2020/10/Intro-movie-copy.mp4" type="video/mp4">
+			</video>
 		</section>
 
 		
@@ -36,53 +39,60 @@ get_header();
 					<p id="headerCalendar">CALENDAR</p>
 					<input type="text" id="searchInputCalendar" onkeyup="functionSearchCalendar()" placeholder="CALENDAR">
 				</div>
-				<?php 
-					$args = array(
-						'post_type' => 'post',
-						'post_status' => 'publish',
-						'posts_per_page' => -1,
-						'meta_query' => array(
-							array(
-								'key'   => 'todays_event',
-								'value' => '1',
+				<div class="todays-event">
+					<?php 
+						$args = array(
+							'post_type' => 'post',
+							'post_status' => 'publish',
+							'posts_per_page' => -1,
+							'meta_query' => array(
+								array(
+									'key'   => 'todays_event',
+									'value' => '1',
+								)
 							)
-						)
-					);
-					$arr_posts = new WP_Query( $args );
-					
-					if ( $arr_posts->have_posts() ) :
+						);
+						$arr_posts = new WP_Query( $args );
 						
-						while ( $arr_posts->have_posts() ) :
-							$arr_posts->the_post();
-							?>
-							<a href="<?php the_permalink(); ?>">
-							<article style="margin-top: 44px;" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-								<?php $backgroundImg = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'post-image' );?>
-								<div class="post-thumbnail" style="background: url('<?php echo $backgroundImg[0]; ?>') no-repeat; background-size: cover; background-position: center;"></div>
-								<div class="event-header" style="display: flex; flex-direction: row; flex-wrap: wrap; width: 100%;">
-									<span class="date"><?php the_field('opening'); ?></span>
-									<span class="time" style="text-align: right; font-size: 14px; margin-block-end: 0;">h <?php the_field('time'); ?>:00</span>
-									<span class="type" style="text-align: right; font-size: 14px; margin-block-end: 0; flex-grow: 4;"><?php the_field('type'); ?></span>
-								</div>
-								<a href="<?php the_permalink(); ?>">
-									<span class="title"><?php print the_title(); ?></span>
-								</a>
-								<div class="summary">
+						if ( $arr_posts->have_posts() ) :
+							
+							while ( $arr_posts->have_posts() ) :
+								$arr_posts->the_post();
+								?>
+								<div class="show-todays-event">
+								<article style="margin-top: 44px;" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+									<?php $backgroundImg = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'post-image' );?>
 									<a href="<?php the_permalink(); ?>">
-										<span class="paragraph"><?php $summary = get_field('text');
-										$pos=strpos($summary, ' ', 300);
-										echo substr($summary,0,$pos ); ?></span><span>...</span>
+										<div class="post-thumbnail" style="background: url('<?php echo $backgroundImg[0]; ?>') no-repeat; background-size: cover; background-position: center;"></div>
 									</a>
+									<a href="<?php the_permalink(); ?>">
+										<div class="event-header" style="display: flex; flex-direction: row; flex-wrap: wrap; width: 100%;">
+											<span class="date"><?php the_field('opening'); ?></span>
+											<span class="time" style="text-align: right; font-size: 14px; margin-block-end: 0; padding-left: 3px;">h <?php the_field('time'); ?>.00</span>
+											<span class="type" style="text-align: right; font-size: 14px; margin-block-end: 0; flex-grow: 4;"><?php the_field('type'); ?></span>
+										</div>
+									</a>
+									<a href="<?php the_permalink(); ?>">
+										<span class="title"><?php print the_title(); ?></span>
+									</a>
+									<div class="summary">
+										<a href="<?php the_permalink(); ?>">
+											<span class="paragraph"><?php $summary = get_field('text');
+											$pos=strpos($summary, ' ', 300);
+											echo substr($summary,0,$pos ); ?></span><span>...</span>
+										</a>
+									</div>
+								</article>
 								</div>
-							</article>
-							</a>
-							<?php
-						endwhile;
-					endif; 
-				?>
+								<?php
+							endwhile;
+						endif; 
+					?>
 
-				<div id="miniCalendar">
-					<?php echo do_shortcode('[clndr id=mini-calendar]'); ?>
+					<div id="miniCalendar">
+						<?php echo do_shortcode('[clndr id=mini-calendar]'); ?>
+					</div>
+				
 				</div>
 
 				<ul class="inner" id="newsCalendar">
@@ -113,8 +123,8 @@ get_header();
 								<div class="post-thumbnail" style="background: url('<?php echo $backgroundImg[0]; ?>') no-repeat; background-size: cover; background-position: center;"></div>
 										<div class="event-header" <?php post_class(); ?>>
 											<a href="<?php the_permalink(); ?>">
-												<span class="date">&#91;<?php the_field('date'); ?>&#93;</span>
-												<span class="time">h <?php the_field('time'); ?>:00</span>
+												<span class="date"><?php the_field('date'); ?></span>
+												<span class="time">h <?php the_field('time'); ?>.00</span>
 												<span class="title"><?php print the_title(); ?></span>
 											</a>
 											<p class="type"><?php the_field('type'); ?></p>
