@@ -11,8 +11,13 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
+		<div class="title">
+			<h1 class="header"><?php print the_title(); ?></h1>
+			<div id="close" onclick="goBack()">Close</div>
+		</div>
+
 		<!-- Swiper -->
-		<div class="swiper-container">
+		<div class="swiper">
 			<div class="swiper-wrapper">
 				<?php if( have_rows('swiper') ): ?>
 					<?php while( have_rows('swiper') ): the_row(); 
@@ -32,53 +37,29 @@
 		</div>
 
 	<div class="entry-content">
-		<header class="entry-header">
-			<?php
-			if ( is_singular() ) :
-				the_title( '<h1 class="entry-title">', '</h1>' );
-			else :
-				the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
-			endif;
-
-			if ( 'post' === get_post_type() ) :
-				?>
-			<?php endif; ?>
-		</header><!-- .entry-header -->
-		<?php
-		the_content(
-			sprintf(
-				wp_kses(
-					/* translators: %s: Name of current post. Only visible to screen readers */
-					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', '_motius' ),
-					array(
-						'span' => array(
-							'class' => array(),
-						),
-					)
-				),
-				wp_kses_post( get_the_title() )
-			)
-		);
-
-		wp_link_pages(
-			array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', '_motius' ),
-				'after'  => '</div>',
-			)
-		);
-		?>
 		<div class="info">
-			<div class="title">
-				<h1 class="header"><?php the_field('title'); ?></h1>
-			</div>
 			<div class="text">
-				<p class="paragraph"><?php the_field('text'); ?></p>
+				<?php the_field('text'); ?>
 			</div>
 		</div>
 		<div class="side">
 			<div class="date">
-				<p><?php the_field('date'); ?></p>
-				<p><?php the_field('side_description'); ?></p>
+				<div class="date-content-inner">
+					<div>
+						<?php if( get_field('date_single_title') ): ?>
+							<p class="event-author"><?php the_field('date_single_title'); ?></p>
+						<?php endif; ?>
+						<?php if( get_field('date_start_title') ): ?>
+							<p class="event-author"><?php the_field('date_start_title'); ?> — </p>
+						<?php endif; ?>
+						<?php if( get_field('date_end_title') ): ?>
+							<p class="event-author"><?php the_field('date_end_title'); ?></p>
+						<?php endif; ?>
+						<span class="time">h <?php the_field('time'); ?></span>
+					</div>
+					<p class="type" style="margin-block-end: 7px; pointer-events: none;"><?php the_category( ' ' ); ?></p>
+				</div>
+				<p class="side-description"><?php the_field('side_description'); ?></p>
 			</div>
 			<div class="additional-info">
 				<?php if( have_rows('additional_info_list') ): ?>

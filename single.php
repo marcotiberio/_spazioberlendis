@@ -10,30 +10,76 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+	<main id="primary" class="site-main wp-post-modal">
 
-		<div id="close" onclick="window.location.href='https://www.spazioberlendis.it/home/#central'">Close</div>
+		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-		<?php
-		while ( have_posts() ) :
-			the_post();
+			<div class="title">
+				<h1 class="header"><?php print the_title(); ?></h1>
+				<div id="close"><p onclick="goBack()">Close</p></div>
+			</div>
 
-			get_template_part( 'template-parts/content', get_post_type() );
+			<!-- Swiper -->
+			<div class="swiper swiperSingle" id="swiperSingle">
+				<div class="swiper-wrapper">
+					<?php if( have_rows('swiper') ): ?>
+						<?php while( have_rows('swiper') ): the_row();
 
-			the_post_navigation(
-				array(
-					'prev_text' => '<span class="nav-subtitle">' . esc_html__( 'Previous:', 'spazioberlendis' ) . '</span> <span class="nav-title">%title</span>',
-					'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Next:', 'spazioberlendis' ) . '</span> <span class="nav-title">%title</span>',
-				)
-			);
+							// Load sub field value.
+							$image = get_sub_field('image');
+							?>
+								<div class="swiper-slide" style="background-image: url(<?php echo esc_url( $image['url'] ); ?>);"></div>
+						<?php endwhile; ?>
+					<?php endif; ?>
+				</div>
+				<!-- Add Arrows -->
+				<div class="swiper-button-next"></div>
+				<div class="swiper-button-prev"></div>
+			</div>
 
-			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
-				comments_template();
-			endif;
+			<div class="entry-content">
+			<div class="info">
+				<div class="text">
+					<?php the_field('text'); ?>
+				</div>
+			</div>
+			<div class="side">
+				<div class="date">
+					<div class="date-content-inner">
+						<div>
+							<?php if( get_field('date_single_title') ): ?>
+								<p class="event-author"><?php the_field('date_single_title'); ?></p>
+							<?php endif; ?>
+							<?php if( get_field('date_start_title') ): ?>
+								<p class="event-author"><?php the_field('date_start_title'); ?> — </p>
+							<?php endif; ?>
+							<?php if( get_field('date_end_title') ): ?>
+								<p class="event-author"><?php the_field('date_end_title'); ?></p>
+							<?php endif; ?>
+							<span class="time">h <?php the_field('time'); ?></span>
+						</div>
+						<p class="type" style="margin-block-end: 7px; pointer-events: none;"><?php the_category( ' ' ); ?></p>
+					</div>
+					<p class="side-description"><?php the_field('side_description'); ?></p>
+				</div>
+				<div class="additional-info">
+					<?php if( have_rows('additional_info_list') ): ?>
+						<ul>
+						<?php while( have_rows('additional_info_list') ): the_row(); 
+							?>
+							<li>
+								<p class="side-description"><?php the_sub_field('additional_info'); ?></p>
+							</li>
+						<?php endwhile; ?>
+						</ul>
+					<?php endif; ?>
+				</div>
+			</div>
 
-		endwhile; // End of the loop.
-		?>
+			</div><!-- .entry-content -->
+
+
+		</article><!-- #post-<?php the_ID(); ?> -->
 
 	</main><!-- #main -->
 
